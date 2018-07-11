@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2015. Alexey Chernysh, Krasnoyarsk, Russia
+  ~ e-mail: ALEXEY DOT CHERNYSH AT GMAIL DOT COM.
+  -->
+
+<resources>
+    <!--
+        Language-dependent part of strings
+    -->
+
+    <!--
+        Resource titles
+    -->
+    <string name="title_activity_number_picker">Толщина материала, </string>
+
+    <!--
+        Table headers
+    -->
+    <string name="thickness_header">Толщина \n мм</string>
+    <string name="arc_voltage_header">Напряжение \n дуги\nВ</string>
+    <string name="arc_height_header">Высота \n дуги \n мм</string>
+    <string name="pierce_time_header">Время \n прожига \n сек</string>
+    <string name="pierce_height_header">Высота \n прожига \n мм</string>
+    <string name="current_header">Ток \n резки \n А</string>
+    <string name="system_header">Система</string>
+    <string name="process_header">Процесс</string>
+    <string name="purpose_header">Назначение</string>
+    <string name="kerf_offset_header">Компенсация \n мм</string>
+    <string name="cut_speed_header">Скорость \n резки \n мм/мин</string>
+    <string name="mesurement_units">Единицы измерения</string>
+    <string name="metric">Миллиметры</string>
+    <string name="imperial">Дюймы</string>
+    <string name="app_name">Таблицы для плазменного резака</string>
+    <string name="cutting_height_header">Высота \n дуги</string>
+    <string name="cutting_voltage_header">Напряжение \n дуги</string>
+
+</resources>

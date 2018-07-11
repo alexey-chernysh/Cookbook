@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2015. Alexey Chernysh, Krasnoyarsk, Russia
+  ~ e-mail: ALEXEY DOT CHERNYSH AT GMAIL DOT COM.
+  -->
+
+<resources>
+    <!--
+        Language-dependent part of strings
+    -->
+
+    <!--
+        Resource titles
+    -->
+    <string name="title_activity_number_picker">Thickness, </string>
+
+    <!--
+        Table headers
+    -->
+    <string name="thickness_header">Thickness</string>
+    <string name="arc_voltage_header">Arc \n voltage</string>
+    <string name="arc_height_header">Arc \n height</string>
+    <string name="pierce_time_header">Pierce \n time</string>
+    <string name="pierce_height_header">Pierce \n height</string>
+    <string name="current_header">Current</string>
+    <string name="system_header">System</string>
+    <string name="process_header">Process</string>
+    <string name="purpose_header">Purpose</string>
+    <string name="kerf_offset_header">Kerf \n offset</string>
+    <string name="cut_speed_header">Cutting \n velocity</string>
+    <string name="cutting_voltage_header">Cutting \n voltage</string>
+    <string name="cutting_height_header">Cutting \n height</string>
+    <string name="imperial">Inches/Gauges</string>
+    <string name="metric">Millimeters</string>
+    <string name="mesurement_units">Measurement Units</string>
+    <string name="app_name">Plasma cutter cookbook</string>
+
+    <!--
+        Messages
+    -->
+</resources>
