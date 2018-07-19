@@ -18,12 +18,5 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        AppDatabase db = App.getInstance().getAppDatabase();
-
-        int[] ids = {0,1,2};
-        List<Material> listOfMaterial =  db.materialDao().loadAllByIds(ids);
-        for(int i = 0; i<ids.length; i++)
-            Log.d(LOG_TAG, listOfMaterial.get(i).toString());
-
     }
 }
