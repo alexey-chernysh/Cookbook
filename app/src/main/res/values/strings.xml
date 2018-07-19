@@ -29,7 +29,7 @@
         4. names of files
     -->
     <string name="sd_card" translatable="false">/data/data/</string>
-    <string name="db_name" translatable="false">cut_chart.sqlite</string>
+    <string name="db_name" translatable="false">cut_chart.db</string>
     <!--
         5. names of tables and fields in database and string expressions used in queries
     -->

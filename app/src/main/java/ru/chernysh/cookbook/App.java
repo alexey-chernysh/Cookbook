@@ -2,14 +2,11 @@ package ru.chernysh.cookbook;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.database.Cursor;
 import android.util.Log;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,6 +50,10 @@ public class App extends Application {
         return context;
     }
 
+    public static AppDatabase getAppDatabase() {
+        return appDatabase;
+    }
+
     @Override
     public void  onCreate(){
         super.onCreate();
@@ -60,21 +61,15 @@ public class App extends Application {
         instance = this;
         context = this.getApplicationContext();
         language = Locale.getDefault().getLanguage();
-        appDatabase = getDatabase();
+        appDatabase = openDatabase();
     }
 
-    private static AppDatabase getDatabase(){
-        if(!databaseFileExist())  copyInitialDBFromAssets();
-        return openExistingDatabase();
-    }
-
-    private static AppDatabase openExistingDatabase() {
-        return Room.databaseBuilder(context, AppDatabase.class, getDBPath()).build();
-    }
-
-    private static boolean databaseFileExist() {
-        final File dbPath = context.getDatabasePath(getDBName());
-        return dbPath.exists();
+    private static AppDatabase openDatabase(){
+        final File dbPath = context.getDatabasePath(context.getString(R.string.db_name));
+        if(!dbPath.exists())  copyInitialDBFromAssets();
+        RoomDatabase.Builder<AppDatabase> dbBuilder = Room.databaseBuilder(context, AppDatabase.class, dbPath.getName());
+        AppDatabase db = dbBuilder.build();
+        return db;
     }
 
     /**
@@ -83,18 +78,13 @@ public class App extends Application {
      */
     private static void copyInitialDBFromAssets() {
 
-        InputStream inStream = null;
-        OutputStream outStream = null;
-
         try {
-            inStream = new BufferedInputStream(context.getAssets().open(getDBName()), DB_FILES_COPY_BUFFER_SIZE);
-            String db_folder = getDBDir();
-            File dbDir = new File(db_folder);
-            if (!dbDir.exists())
-                if(!dbDir.mkdir())
-                    throw new IOException("Can't create database dir");
+            final InputStream inStream = context.getAssets().open(context.getString(R.string.db_name));
             String dbPath = getDBPath();
-            outStream = new BufferedOutputStream(new FileOutputStream(dbPath), DB_FILES_COPY_BUFFER_SIZE);
+            File file = new File(dbPath);
+            file.getParentFile().mkdirs(); // Will create parent directories if not exists
+            file.createNewFile();
+            final OutputStream outStream  = new FileOutputStream(file, false);
 
             byte[] buffer = new byte[DB_FILES_COPY_BUFFER_SIZE];
             int length;
@@ -111,19 +101,11 @@ public class App extends Application {
         }
     }
 
-    private static String getDBDir(){
-        return    App.getInstance().getString(R.string.sd_card)
-                + App.getInstance().getPackageName();
-    }
-
     private static String getDBPath(){
-        return    getDBDir()
-                + "/databases/"
-                + getDBName();
-    }
-
-    private static String getDBName() {
-        return App.getInstance().getString(R.string.db_name);
+        return context.getString(R.string.sd_card)
+                 + context.getPackageName()
+                 + "/databases/"
+                 + context.getString(R.string.db_name);
     }
 
 }

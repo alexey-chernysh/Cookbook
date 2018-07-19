@@ -5,13 +5,19 @@ import android.arch.persistence.room.*;
 @Entity(tableName = "material")
 public class Material {
 
-    public int getId() {
-        return id;
-    }
+    @PrimaryKey
+    private int id;
 
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    @ColumnInfo(name = "name_en")
+    private String nameEn;
 
     public String getNameEn() {
         return nameEn;
@@ -21,6 +27,9 @@ public class Material {
         this.nameEn = nameEn;
     }
 
+    @ColumnInfo(name = "name_ru")
+    private String nameRu;
+
     public String getNameRu() {
         return nameRu;
     }
@@ -28,6 +37,9 @@ public class Material {
     public void setNameRu(String nameRu) {
         this.nameRu = nameRu;
     }
+
+    @ColumnInfo(name = "density")
+    private double density;
 
     public double getDensity() {
         return density;
@@ -37,6 +49,9 @@ public class Material {
         this.density = density;
     }
 
+    @ColumnInfo(name = "ignition_temp")
+    private double ignitionTemp;
+
     public double getIgnitionTemp() {
         return ignitionTemp;
     }
@@ -45,6 +60,9 @@ public class Material {
         this.ignitionTemp = ignitionTemp;
     }
 
+    @ColumnInfo(name = "melting_temp")
+    private double meltingTemp;
+
     public double getMeltingTemp() {
         return meltingTemp;
     }
@@ -52,23 +70,5 @@ public class Material {
     public void setMeltingTemp(double meltingTemp) {
         this.meltingTemp = meltingTemp;
     }
-
-    @PrimaryKey
-    private int id;
-
-    @ColumnInfo(name = "name_en")
-    private String nameEn;
-
-    @ColumnInfo(name = "name_ru")
-    private String nameRu;
-
-    @ColumnInfo(name = "density")
-    private double density;
-
-    @ColumnInfo(name = "ignition_temp")
-    private double ignitionTemp;
-
-    @ColumnInfo(name = "melting_temp")
-    private double meltingTemp;
 
 }
