@@ -18,7 +18,7 @@ public class StoredKeyTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
         App.getInstance().setContext(appContext);
 
-        StoredKey storedKey = new StoredKey("Test stored key");
+        StoredKey storedKey = new StoredKey("test");
 
         final Random random = new Random();
         int storedValue = random.nextInt();

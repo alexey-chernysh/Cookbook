@@ -18,8 +18,7 @@
         2. names of preferences
     -->
     <string name="preference_" translatable="false">preference_</string>
-    <string name="preference_prefix" translatable="false">last_selection_in_</string>
-    <string name="preference_suffix" translatable="false">_table</string>
+    <string name="preference_prefix" translatable="false">preference named</string>
     <string name="material_thickness" translatable="false">thickness</string>
 
     <!--
